@@ -1,0 +1,34 @@
+.task-list-container {
+    padding: 1rem;
+}
+
+.task-list-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    transition: box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-card h3 {
+    margin: 0 0 5px;
+}
+
+.task-card p {
+    margin: 4px 0;
+}
