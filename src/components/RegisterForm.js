@@ -1,15 +1,37 @@
 import React, { useState } from 'react';
 import '../styles/RegisterForm.css';
+import { useNavigate } from 'react-router-dom';
 
 function RegisterForm() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Aquí irá la lógica para registrar usuario con el backend
-        console.log('Registro:', { name, email, password });
+
+        try {
+            const response = await fetch('http://localhost:5000/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, password }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert('Registro exitoso');
+                navigate('/');
+            } else {
+                alert(data.message || 'Error al registrarse');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error de conexión con el servidor');
+        }
     };
 
     return (
@@ -40,7 +62,7 @@ function RegisterForm() {
                     required
                 />
 
-                <button type="submit">Crear cuenta</button>
+                <button type="submit">Registrarse</button>
             </form>
         </div>
     );
