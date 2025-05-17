@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/TaskList.css';
+import dayjs from 'dayjs';
 
 function TaskList({ tasks }) {
     return (
@@ -14,7 +15,7 @@ function TaskList({ tasks }) {
                 <h3>{task.title}</h3>
                 <p><strong>Descripción:</strong> {task.description}</p>
                 <p><strong>Estado:</strong> {task.status}</p>
-                <p><strong>Fecha límite:</strong> {new Date(task.dueDate).toLocaleDateString()}</p>
+                <p><strong>Fecha límite:</strong> {dayjs(task.dueDate).format('DD/MM/YYYY')}</p>
                 </li>
             ))}
             </ul>
