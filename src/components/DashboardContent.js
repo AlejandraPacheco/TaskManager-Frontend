@@ -40,9 +40,24 @@ function DashboardContent() {
     };
 
     const handleTaskUpdated = () => {
-        setShowForm(false);
         setTaskToEdit(null);
+        setShowForm(false);
         fetchTasks();
+    };
+
+    const handleDeleteTask = async (taskId) => {
+        const token = localStorage.getItem('token');
+
+        const res = await fetch(`http://localhost:5000/api/tasks/${taskId}`, {
+            method: 'DELETE',
+            headers: { Authorization: `Bearer ${token}` },
+        });
+
+        if (res.ok) {
+            fetchTasks();
+        } else {
+            alert('Error al eliminar la tarea');
+        }
     };
 
     const handleEditTask = (task) => {
@@ -55,8 +70,8 @@ function DashboardContent() {
             <h1>Bienvenido, {userName}</h1>
 
             <button onClick={() => {
+                setTaskToEdit(null);
                 setShowForm(!showForm);
-                setTaskToEdit(null); // resetear si está editando
             }} className="new-task-button">
                 {showForm ? 'Cancelar' : 'Nueva Tarea'}
             </button>
@@ -69,7 +84,11 @@ function DashboardContent() {
                 />
             )}
 
-            <TaskList tasks={tasks} onEdit={handleEditTask} />
+            <TaskList
+                tasks={tasks}
+                onDeleteTask={handleDeleteTask}
+                onEditTask={handleEditTask}
+            />
         </>
     );
 }
