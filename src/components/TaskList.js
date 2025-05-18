@@ -19,7 +19,7 @@ function TaskList({ tasks, onDeleteTask, onEditTask }) {
         <div className="task-list-container">
             <h2 className="task-list-title">Mis Tareas</h2>
             {tasks.length === 0 ? (
-                <p>No tienes tareas aún.</p>
+                <p>No hay tareas para mostrar.</p>
             ) : (
                 <ul className="task-list">
                     {tasks.map((task) => (

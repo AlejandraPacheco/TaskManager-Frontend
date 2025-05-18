@@ -32,3 +32,40 @@
 .task-card p {
     margin: 4px 0;
 }
+
+.task-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.task-actions button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.task-actions button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.task-actions button:not(:disabled):hover {
+    filter: brightness(1.1);
+}
+
+/* Estilo botón Editar */
+.task-actions button:nth-child(1) {
+    background-color: #3498db;
+    color: white;
+}
+
+/* Estilo botón Eliminar */
+.task-actions .delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+

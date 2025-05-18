@@ -1,17 +1,21 @@
 .dashboard-container {
     padding: 2rem;
-    background-color: #eef2f7;
+    background-color: #599E70;
     min-height: 100vh;
 }
 
 .dashboard-container h1 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.3rem;
+    margin-top: 1.3rem;
+    margin-left: 2rem;
+    color: white;
+    text-align: left;
 }
 
 .new-task-button {
     padding: 8px 15px;
     margin: 15px 0;
+    margin-left: 25px;
     background-color: #4caf50;
     color: white;
     border: none;
@@ -22,4 +26,77 @@
 
 .new-task-button:hover {
     background-color: #45a049;
+}
+
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.filter-container select,
+.filter-container input[type="text"],
+.filter-container input[type="date"] {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    min-width: 160px;
+    flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+    .filter-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-container select,
+    .filter-container input {
+        width: 100%;
+    }
+}
+
+.new-task-button {
+    background-color: #3498db;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.new-task-button:hover {
+    background-color: #2980b9;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.logout-button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 2rem;
+}
+
+.logout-button:hover {
+    background-color: #c0392b;
 }
