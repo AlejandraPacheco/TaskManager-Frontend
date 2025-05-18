@@ -27,7 +27,7 @@ function DashboardContent() {
     const fetchUser = () => {
         const token = localStorage.getItem('token');
 
-        fetch('http://localhost:5000/api/auth/me', {
+        fetch('https://taskmanager-backend-22up.onrender.com/api/auth/me', {
             headers: { Authorization: `Bearer ${token}` },
         })
             .then((res) => res.json())
@@ -43,7 +43,7 @@ function DashboardContent() {
         if (fromDate) params.append('fromDate', fromDate);
         if (toDate) params.append('toDate', toDate);
 
-        fetch(`http://localhost:5000/api/tasks?${params.toString()}`, {
+        fetch(`https://taskmanager-backend-22up.onrender.com/api/tasks?${params.toString()}`, {
             headers: { Authorization: `Bearer ${token}` },
         })
             .then((res) => res.json())
@@ -64,7 +64,7 @@ function DashboardContent() {
     const handleDeleteTask = async (taskId) => {
         const token = localStorage.getItem('token');
 
-        const res = await fetch(`http://localhost:5000/api/tasks/${taskId}`, {
+        const res = await fetch(`https://taskmanager-backend-22up.onrender.com/api/tasks/${taskId}`, {
             method: 'DELETE',
             headers: { Authorization: `Bearer ${token}` },
         });

@@ -42,8 +42,8 @@ function TaskForm({ onTaskCreated, onTaskUpdated, taskToEdit }) {
 
         const token = localStorage.getItem('token');
         const url = taskToEdit
-            ? `http://localhost:5000/api/tasks/${taskToEdit.id}`
-            : 'http://localhost:5000/api/tasks';
+            ? `https://taskmanager-backend-22up.onrender.com/api/tasks/${taskToEdit.id}`
+            : 'https://taskmanager-backend-22up.onrender.com/api/tasks';
         const method = taskToEdit ? 'PUT' : 'POST';
 
         const response = await fetch(url, {
