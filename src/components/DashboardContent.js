@@ -6,6 +6,7 @@ function DashboardContent() {
     const [userName, setUserName] = useState('');
     const [tasks, setTasks] = useState([]);
     const [showForm, setShowForm] = useState(false);
+    const [taskToEdit, setTaskToEdit] = useState(null);
 
     useEffect(() => {
         fetchUserAndTasks();
@@ -35,20 +36,40 @@ function DashboardContent() {
 
     const handleTaskCreated = () => {
         setShowForm(false);
-        fetchTasks(); // recarga las tareas tras crear
+        fetchTasks();
+    };
+
+    const handleTaskUpdated = () => {
+        setShowForm(false);
+        setTaskToEdit(null);
+        fetchTasks();
+    };
+
+    const handleEditTask = (task) => {
+        setTaskToEdit(task);
+        setShowForm(true);
     };
 
     return (
         <>
             <h1>Bienvenido, {userName}</h1>
 
-            <button onClick={() => setShowForm(!showForm)} className="new-task-button">
+            <button onClick={() => {
+                setShowForm(!showForm);
+                setTaskToEdit(null); // resetear si está editando
+            }} className="new-task-button">
                 {showForm ? 'Cancelar' : 'Nueva Tarea'}
             </button>
 
-            {showForm && <TaskForm onTaskCreated={handleTaskCreated} />}
+            {showForm && (
+                <TaskForm
+                    onTaskCreated={handleTaskCreated}
+                    onTaskUpdated={handleTaskUpdated}
+                    taskToEdit={taskToEdit}
+                />
+            )}
 
-            <TaskList tasks={tasks} />
+            <TaskList tasks={tasks} onEdit={handleEditTask} />
         </>
     );
 }
